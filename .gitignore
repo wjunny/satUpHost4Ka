@@ -1,0 +1,15 @@
+__pycache__
+.vscode
+gen_mapping.py
+help_doc.py
+venv
+.venv
+registers.txt
+result/
+test1_result.txt
+test2_result.txt
+test_antenna.py
+settings.yaml
+save
+calib_settings.yaml
+calib_output
