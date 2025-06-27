@@ -8,8 +8,6 @@ import scipy.optimize as optimize
 from enum import Enum
 
 import paa_control
-import network_analyzer
-import robotic_arm
 import my_utils 
 
 OUTPUT_PATH = 'calib_output'
@@ -249,26 +247,12 @@ def run_calibration(settings:dict):
    paa = paa_control.PAAControl(settings['paa_serial_port'], settings['paa_type'], 8)
    paa.enable_amplifier(False)
    paa.initialize_antenna() 
-   
-   global vna
-   vna = network_analyzer.NetworkAnalyzer(settings['vna_ip_address'])
-   vna.set_measurement('S21')   
-   vna.set_frequency(settings['vna_center_freq']*1e6, 0)
-   vna.set_sweep_points(1)
-   vna.set_average(settings['vna_average_count'])
-   vna.set_power_level(settings['vna_power_level'])
-
-   global arm
-   arm = robotic_arm.RoboticArmControl(settings['robotic_arm_serial_port'])
-   arm.rotate_gripper(GRIPPER_ANGLE_HLP)   
-   time.sleep(2)
 
    paa.enable_amplifier(True)
 
    calib = calibration_core(paa_control.Polar.HORI_LP)
    print('\n')
-   arm.rotate_gripper(GRIPPER_ANGLE_VLP)   
-   time.sleep(2)
+
    calib |= calibration_core(paa_control.Polar.VERT_LP)
 
    paa.enable_amplifier(False)

@@ -1,8 +1,2 @@
 paa_serial_port: COM8
-robotic_arm_serial_port: COM25
-mixer_serial_port: COM13
-sa_ip_address: 192.168.40.161
-scpi_port: '5025'
-sa_center_freq: 1000
-sa_span: 100
 paa_type: Receiving
