@@ -259,8 +259,6 @@ class AnalyzerMainWindow(QMainWindow, Ui_MainWindow):
 
    def set_enable_all(self, enable):
       self.groupBox1.setEnabled(enable)
-      self.groupBox2.setEnabled(enable)
-      self.groupBox3.setEnabled(enable)
       self.groupBox4.setEnabled(enable)
       self.StartButton.setEnabled(enable)
       self.StopButton.setEnabled(not enable)
